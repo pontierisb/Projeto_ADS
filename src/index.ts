@@ -69,7 +69,7 @@ function adicionarLivro(
 }
 
 //Adiciona função de remover os livros da biblioteca
-function removerlivro(indice: number): void {
+function removerLivro(indice: number): void {
   if (indice < 0) {
     console.log("Erro: Índice inválido");
     return;
@@ -83,5 +83,17 @@ function removerlivro(indice: number): void {
   avaliacao.splice(indice, 1);
 
   console.log(`Livro "${tituloremovido}" removido com sucesso!`);
+}
+//função de busca e filtro
+function buscarLivro (termo: string): number[]{
+  const indices: number[] = [];
+  const termoDeBusca = termo.toLowerCase();
 
+  titulos.forEach((titulo, indice) => {
+    if (titulo.toLowerCase().includes(termoDeBusca)) {
+      indices.push(indice);
+    }
+  });
+
+  return indices;
 }
