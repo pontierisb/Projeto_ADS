@@ -29,9 +29,9 @@ avaliacao.push(5, 4, 0, 5, 0);
 //Agora vou fazer a função de exibir a biblioteca
 function exibirBiblioteca(): void {
     console.log('=== Biblioteca do Willian===');
-    titulos.forEach((titulo, i ) => {
-        const status = lido[i] ? `Lido - Avaliação: ${avaliacao[i]}/5` : 'Não lido';
-        console.log(`${titulo}, ${autores[i]} (${anos[i]}, ${paginas[i]} páginas) - ${status}`);
+    titulos.forEach((titulo, indice ) => {
+        const status = lido[indice] ? `Lido - Avaliação: ${avaliacao[indice]}/5` : 'Não lido';
+        console.log(`${titulo}, ${autores[indice]} (${anos[indice]}, ${paginas[indice]} páginas) - ${status}`);
   });
 }
 exibirBiblioteca();
@@ -96,4 +96,21 @@ function buscarLivro (termo: string): number[]{
   });
 
   return indices;
+}
+//função de busca por autor
+function buscarAutor(autor: string): string[]{
+  const livrodoautor = autor.toLowerCase();
+  const livrosEncontrados: string[] = [];
+
+  autores.forEach((autorLivro, indice) => {
+    if (autorLivro.toLowerCase().includes(livrodoautor))
+    {
+      const tituloLivro = titulos[indice];
+      if (tituloLivro !== undefined) {
+        livrosEncontrados.push(tituloLivro);
+      }
+    }
+  });
+
+  return livrosEncontrados;
 }
