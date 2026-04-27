@@ -36,7 +36,7 @@ function exibirBiblioteca(): void {
 }
 exibirBiblioteca();
 
-//Adicionar função de adicionar livros
+//Adicionar função de adicionar livros na biblioteca
 function adicionarLivro(
   titulo: string,
   autor: string,
@@ -66,4 +66,22 @@ function adicionarLivro(
   lido.push(false);
   avaliacao.push(0);
   console.log(`Livro "${titulo}" adicionado com sucesso!`);
+}
+
+//Adiciona função de remover os livros da biblioteca
+function removerlivro(indice: number): void {
+  if (indice < 0) {
+    console.log("Erro: Índice inválido");
+    return;
+  }
+  const tituloremovido = titulos[indice];
+  titulos.splice(indice, 1);
+  autores.splice(indice, 1);
+  anos.splice(indice, 1);
+  paginas.splice(indice,1 );
+  lido.splice(indice, 1);
+  avaliacao.splice(indice, 1);
+
+  console.log(`Livro "${tituloremovido}" removido com sucesso!`);
+
 }
