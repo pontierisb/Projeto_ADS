@@ -134,3 +134,30 @@ avaliacao[indice] = avaliacaoLivro;
 const tituloLivro = titulos[indice];
 console.log(`Livro "${tituloLivro}" marcado como lido com avaliação ${avaliacaoLivro}/5!`);
 }
+
+//função para listar os livros lidos
+function listarLivrosLidos(): string[] {
+  const livrosLidos: string[] = [];
+  titulos.forEach((titulo, indice) => {
+    if (lido[indice]) {
+      const tituloLivro = titulos[indice];
+      if (tituloLivro !== undefined) {
+        livrosLidos.push(tituloLivro);
+      }
+    }
+  });
+  return livrosLidos;
+}
+//Lista os titulos não lidos
+function listarLivrosNaoLidos(): string[] {
+  const livrosNaoLidos: string[] = [];
+  titulos.forEach((titulo, indice) => {
+    if (!lido[indice]) {
+      const tituloLivro = titulos[indice];
+      if (tituloLivro !== undefined) {
+        livrosNaoLidos.push(tituloLivro);
+      }
+    }
+  });
+  return livrosNaoLidos;
+}
