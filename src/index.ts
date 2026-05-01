@@ -250,3 +250,58 @@ function livrosPorDecada(): void {
   console.log('=========================');
 }
 
+ 
+console.log('╔═════════════════════════════════════════════╗');
+console.log('║       GERENCIADOR DE BIBLIOTECA PESSOAL     ║');
+console.log('╚═════════════════════════════════════════════╝');
+
+//Exibir a biblioteca
+exibirBiblioteca();
+
+//Exibir os livros adicionados
+console.log('+'.repeat(40) + '+');
+console.log('║           ADICIONANDO UM NOVO LIVRO         ║');
+console.log('+'.repeat(40) + '+');
+adicionarLivro('O Senhor dos Anéis', 'J.R.R. Tolkien', 1954, 1178);
+adicionarLivro('A Arte da Guerra', 'Sun Tzu', -500, 273); //Teste de validação
+adicionarLivro('O Pequeno Príncipe', 'Antoine de Saint-Exupéry', 1943, 96);
+
+//Exibir buscar por título
+console.log('+'.repeat(40) + '+');
+console.log('║           BUSCANDO LIVROS POR TÍTULO       ║');
+console.log('+'.repeat(40) + '+');
+//Exemploe para buscar algum livro com "Guerra" no título
+console.log('\n Buscando "guerra"');
+const buscarGuerra = buscarLivro('guerra');
+buscarGuerra.forEach(indice => {
+  const tituloLivro = titulos[indice];
+  const livroAutor = autores[indice];
+  if (tituloLivro && livroAutor) {
+    console.log(`Encontrado: "${tituloLivro}" de ${livroAutor}`);
+  }
+});
+
+//Exemplo para buscar algum livro com "Dom" no título
+console.log('\n Buscando "Dom"');
+const buscarDom = buscarLivro('Dom');
+buscarDom.forEach(indice => {
+  const tituloLivro = titulos[indice];
+  const livroAutor = autores[indice];
+  if (tituloLivro && livroAutor) {
+    console.log(`Encontrado: "${tituloLivro}" de ${livroAutor}`);
+  }
+});
+
+//Buscar por autor do livro
+console.log('+'.repeat(40) + '+');
+console.log('║           BUSCANDO LIVROS POR AUTOR        ║');
+console.log('+'.repeat(40) + '+');
+//Exemplo para buscar livros do autor "J.R.R. Tolkien"
+console.log('\n Buscando livros do autor "J.R.R. Tolkien"');
+const livrosTolkien = buscarAutor('J.R.R. Tolkien');
+livrosTolkien.forEach(titulo => console.log(`Encontrado: "${titulo}"`));
+
+//Exemplo para buscar livros do autor "Machado de Assis"
+console.log('\n Buscando livros do autor "Machado de Assis"');
+const livrosMachado = buscarAutor('Machado de Assis');
+livrosMachado.forEach(titulo => console.log(`Encontrado: "${titulo}"`));
