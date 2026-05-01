@@ -138,6 +138,7 @@ console.log(`Livro "${tituloLivro}" marcado como lido com avaliação ${avaliaca
 //função para listar os livros lidos
 function listarLivrosLidos(): string[] {
   const livrosLidos: string[] = [];
+
   titulos.forEach((titulo, indice) => {
     if (lido[indice]) {
       const tituloLivro = titulos[indice];
@@ -151,6 +152,7 @@ function listarLivrosLidos(): string[] {
 //Lista os titulos não lidos
 function listarLivrosNaoLidos(): string[] {
   const livrosNaoLidos: string[] = [];
+
   titulos.forEach((titulo, indice) => {
     if (!lido[indice]) {
       const tituloLivro = titulos[indice];
@@ -160,4 +162,36 @@ function listarLivrosNaoLidos(): string[] {
     }
   });
   return livrosNaoLidos;
+}
+
+//Estatisticas da biblioteca
+//Total de livros
+function totalLivros(): number {
+  return titulos.length;
+}
+//Total de livros lidos
+function totalLivrosLidos(): number {
+  return titulos.filter(foiLido => foiLido).length;
+}
+
+//Percentual de livros lidos
+function percentualLivrosLidos(): number {
+  const total = totalLivros();
+  if (total === 0) {
+    return 0;
+  }
+  const lidos = totalLivrosLidos();
+  return (lidos / total) * 100;
+}
+
+//media de avaliação dos livros lidos
+function mediaAvaliacaoLivrosLidos(): number {
+  const avaliacoes = avaliacao.filter((_, indice) => {
+    const livroLido = lido[indice];
+    return livroLido !== undefined && livroLido;
+  });
+
+  if (avaliacoes.length === 0) return 0;
+  const soma = avaliacoes.reduce((acumulador, avaliacao) => acumulador + avaliacao, 0);
+  return soma / avaliacoes.length;
 }
