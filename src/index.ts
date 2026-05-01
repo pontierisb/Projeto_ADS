@@ -299,9 +299,43 @@ console.log('+'.repeat(40) + '+');
 //Exemplo para buscar livros do autor "J.R.R. Tolkien"
 console.log('\n Buscando livros do autor "J.R.R. Tolkien"');
 const livrosTolkien = buscarAutor('J.R.R. Tolkien');
-livrosTolkien.forEach(titulo => console.log(`Encontrado: "${titulo}"`));
+livrosTolkien.forEach(titulo => console.log(`Encontrado: "${titulo}"`)
+);
 
 //Exemplo para buscar livros do autor "Machado de Assis"
 console.log('\n Buscando livros do autor "Machado de Assis"');
 const livrosMachado = buscarAutor('Machado de Assis');
-livrosMachado.forEach(titulo => console.log(`Encontrado: "${titulo}"`));
+livrosMachado.forEach(titulo => console.log(`Encontrado: "${titulo}"`)
+);
+
+
+//Marcar um livro como lido e avaliar
+console.log('+'.repeat(40) + '+');
+console.log('║           MARCANDO LIVRO COMO LIDO         ║');
+console.log('+'.repeat(40) + '+');
+//Exemplo para marcar "O Hobbit" como lido com avaliação 5
+const indiceHobbit = buscarLivro('O Hobbit')[0];
+if (indiceHobbit !== undefined) {
+  marcarComoLido(indiceHobbit, 5);
+}
+
+//Exemplo para marcar "Clean Code" como lido com avaliação 4
+const indiceCleanCode = buscarLivro('Clean Code')[0];
+if (indiceCleanCode !== undefined) {
+  marcarComoLido(indiceCleanCode, 4);
+} 
+
+//Listar livros lidos e não lidos
+console.log('+'.repeat(40) + '+');
+console.log('║           STATUS DE LIVROS           ║');
+console.log('+'.repeat(40) + '+');
+
+console.log('\n Livros Lidos:');
+const livrosLidos = listarLivrosLidos();
+livrosLidos.forEach(titulo => console.log(`- ${titulo}`)
+);
+
+console.log('\n Livros Não Lidos:');
+const livrosNaoLidos = listarLivrosNaoLidos();
+livrosNaoLidos.forEach(titulo => console.log(`- ${titulo}`)
+);
