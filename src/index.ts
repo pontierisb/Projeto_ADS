@@ -203,11 +203,20 @@ function tituloMaiorAvaliacao(): string {
  }
  const indiceMaiorAvaliacao = avaliacao.reduce((indiceMaior, avaliacaoAtual, indice) => {
   const avaliacaoMaior = avaliacao[indiceMaior];
-  if (avaliacaoAtual === undefined) {
+  if (avaliacaoMaior === undefined) {
     return indiceMaior;
   }
   return avaliacaoAtual > avaliacaoMaior ? indice : indiceMaior;
 }, 0);
  const tituloLivro = titulos[indiceMaiorAvaliacao];
 return tituloLivro || 'Título não encontrado';
+}
+//Função para total de páginas lidas
+function totalPaginasLidas(): number {
+  const paginasLidas = paginas.filter((_, indice) => {
+    const livroLido = lido[indice];
+    return livroLido !== undefined && livroLido;
+  });
+//Soma as páginas lidas
+  return paginasLidas.reduce((acumulador, paginas) => acumulador + paginas, 0);
 }
