@@ -220,3 +220,33 @@ function totalPaginasLidas(): number {
 //Soma as páginas lidas
   return paginasLidas.reduce((acumulador, paginas) => acumulador + paginas, 0);
 }
+
+//Função para cassificar livros por decada
+function livrosPorDecada(): void {
+  console.log('=== Livros por Década ===');
+  const livrosDecada: { [decada: string]: string[] } = {};
+
+  //Agrupa os livros por década
+  anos.forEach((ano, indice) => {
+    const decada = Math.floor(ano / 10) * 10;
+    const tituloLivro = titulos[indice];
+
+    if (tituloLivro !== undefined) {
+      if (livrosDecada[decada] === undefined) {
+        livrosDecada[decada] = [];
+      }
+      livrosDecada[decada].push(tituloLivro);
+    }
+  });
+
+  //Ordena as decadas e exibe os livros
+  const decadasOrdenadas = Object.keys(livrosDecada).map(Number).sort((a, b) => a - b);
+  decadasOrdenadas.forEach(decada => {
+    const livrosDaDecada = livrosDecada[decada];
+    if (livrosDaDecada !== undefined) {
+      console.log(`${decada}s: ${livrosDaDecada.join(', ')}`);
+    }
+  });
+  console.log('=========================');
+}
+
