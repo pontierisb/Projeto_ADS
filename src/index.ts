@@ -114,3 +114,23 @@ function buscarAutor(autor: string): string[]{
 
   return livrosEncontrados;
 }
+//função de marcar como lido
+function marcarComoLido(indice: number, avaliacaoLivro: number): void {
+  if (indice < 0 || indice >= titulos.length) {
+    console.log("Erro: Índice inválido");
+    return;
+  }
+//verificar se a avaliação é válida
+switch (true) {
+  case avaliacaoLivro < 1:
+    case avaliacaoLivro > 5:
+    console.log("Erro: Avaliação deve ser entre 1 e 5");
+    return;
+}
+
+//marcar como lido e adicionar avaliação
+lido[indice] = true;
+avaliacao[indice] = avaliacaoLivro;
+const tituloLivro = titulos[indice];
+console.log(`Livro "${tituloLivro}" marcado como lido com avaliação ${avaliacaoLivro}/5!`);
+}
