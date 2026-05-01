@@ -195,3 +195,19 @@ function mediaAvaliacaoLivrosLidos(): number {
   const soma = avaliacoes.reduce((acumulador, avaliacao) => acumulador + avaliacao, 0);
   return soma / avaliacoes.length;
 }
+
+//Titulo com maior avaliação
+function tituloMaiorAvaliacao(): string {
+ if (titulos.length === 0) {
+  return "Nenhum livro na biblioteca";
+ }
+ const indiceMaiorAvaliacao = avaliacao.reduce((indiceMaior, avaliacaoAtual, indice) => {
+  const avaliacaoMaior = avaliacao[indiceMaior];
+  if (avaliacaoAtual === undefined) {
+    return indiceMaior;
+  }
+  return avaliacaoAtual > avaliacaoMaior ? indice : indiceMaior;
+}, 0);
+ const tituloLivro = titulos[indiceMaiorAvaliacao];
+return tituloLivro || 'Título não encontrado';
+}
