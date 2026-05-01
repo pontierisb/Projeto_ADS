@@ -263,7 +263,8 @@ console.log('╔═════════════════════�
 console.log('║         EXIBINDO LIVROS ADICIONADOS         ║');
 console.log('╚═════════════════════════════════════════════╝');
 adicionarLivro('O Senhor dos Anéis', 'J.R.R. Tolkien', 1954, 1178);
-adicionarLivro('A Arte da Guerra', 'Sun Tzu', -500, 273); //Teste de validação
+//teste de validação para ano < 0. Tem que aparecer erro: coloque um ano válido
+adicionarLivro('Livro Invalido', 'Autor Invalido', -2020, 300);
 adicionarLivro('O Pequeno Príncipe', 'Antoine de Saint-Exupéry', 1943, 96);
 
 //Exibir buscar por título
@@ -272,9 +273,9 @@ console.log('╔═════════════════════�
 console.log('║         BUSCANDO LIVROS POR TÍTULO          ║');
 console.log('╚═════════════════════════════════════════════╝');
 //Exemploe para buscar algum livro com "Guerra" no título
-console.log('\n Buscando "guerra"');
-const buscarGuerra = buscarLivro('guerra');
-buscarGuerra.forEach(indice => {
+console.log('\n Buscando "pequeno"'); // 
+const buscarPequeno = buscarLivro('pequeno');
+buscarPequeno.forEach(indice => {
   const tituloLivro = titulos[indice];
   const livroAutor = autores[indice];
   if (tituloLivro && livroAutor) {
@@ -374,10 +375,13 @@ if (indice1984 !== undefined) {
   console.log(`Removendo livro: "${titulos[indice1984]}"`);
   removerLivro(indice1984);
 }
+//Teste de validação para remover livro com índice < 0. Tem que aparecer erro: Índice inválido
+console.log('\nTentando remover livro com índice -1');
+removerLivro(-1); 
 
-//Demonstração final da biblioteca
+//Exibir a biblioteca atualizada após remoção e adição de livros
 console.log('\n');
 console.log('╔═════════════════════════════════════════════╗');
-console.log('║       GERENCIADOR DE BIBLIOTECA PESSOAL     ║');
+console.log('║          BIBLIOTECA ATUALIZADA              ║');
 console.log('╚═════════════════════════════════════════════╝');
 exibirBiblioteca();
